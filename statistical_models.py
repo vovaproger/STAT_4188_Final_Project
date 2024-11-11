@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from sklearn import metrics
 
@@ -92,9 +93,9 @@ class ARIMA_Model:
         acf_values = acf(differenced_series, nlags=20)
         pacf_values = pacf(differenced_series, nlags=20)
 
-        # plot_acf(differenced_series)
-        # plot_pacf(differenced_series)
-        # plt.show()
+        plot_acf(differenced_series)
+        plot_pacf(differenced_series)
+        plt.show()
 
         significant_acf_lags = [lag for lag, value in enumerate(acf_values) if abs(value) > 1.96 / (len(differenced_series)**0.5)]
         significant_pacf_lags = [lag for lag, value in enumerate(pacf_values) if abs(value) > 1.96 / (len(differenced_series)**0.5)]

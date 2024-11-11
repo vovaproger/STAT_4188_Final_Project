@@ -39,8 +39,7 @@ if all_stock_data:
     for record in all_stock_data:
         record['date'] = pd.to_datetime(record['t'], unit='ms').strftime('%Y-%m-%d')  # Convert 't' (timestamp) to a readable date
 
-    df = pd.DataFrame(all_stock_data, columns=['date', 'o', 'h', 'l', 'c', 'v'])
-    df.rename(columns={'o': 'open', 'h': 'high', 'l': 'low', 'c': 'close', 'v': 'volume'}, inplace=True)
+    df = pd.DataFrame(all_stock_data, columns=['date', 'open', 'high', 'low', 'close', 'volume'])
 
     df.to_csv(out_folder + f'{ticker}_{end_date-start_date-1}_years_stock_data.csv', index=False)
 
